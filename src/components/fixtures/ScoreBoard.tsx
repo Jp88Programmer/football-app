@@ -10,7 +10,7 @@ const ScoreBoard = () => {
   );
 
   return (
-    <div className="bg-background-1 rounded-lg p-4 flex flex-col gap-6">
+    <div className="bg-background-1 rounded-lg p-4 flex flex-col gap-6 h-full">
       <DateSelector
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}

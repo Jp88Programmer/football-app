@@ -44,7 +44,7 @@ export default function Sidebar() {
     },
   ];
   return (
-    <aside className="w-64 bg-background-1 h-screen p-4 flex flex-col rounded-lg">
+    <aside className="w-64 bg-background-1 h-full p-4 flex flex-col rounded-lg">
       <div className="flex items-center mb-8">
         <h1 className="text-xl font-bold text-black dark:text-white">
           FOOTBALL<span className="text-primary">SHURU</span>

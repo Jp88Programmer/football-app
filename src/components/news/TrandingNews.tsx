@@ -1,12 +1,12 @@
 "use client";
 import Image from "next/image";
 import { Bookmark, ChevronRight } from "lucide-react";
-import news1 from "../../../public/news1.png";
-import news2 from "../../../public/news2.png";
-import news3 from "../../../public/news3.png";
-import news4 from "../../../public/news4.png";
-import news5 from "../../../public/news5.png";
-import trandingNews from "../../../public/tranding-news.png";
+import news1 from "../../../public/news/news1.png";
+import news2 from "../../../public/news/news2.png";
+import news3 from "../../../public/news/news3.png";
+import news4 from "../../../public/news/news4.png";
+import news5 from "../../../public/news/news5.png";
+import trandingNews from "../../../public/news/tranding-news.png";
 
 import type { StaticImageData } from "next/image";
 
@@ -82,7 +82,7 @@ export default function TrendingNews() {
         </div>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-4 overflow-y-scroll">
         {mockNews.map((news) => (
           <div
             key={news.id}

@@ -41,6 +41,7 @@
     --background-1: 0 0% 93%;
     --background-2: 0 0% 99%;
     --card-1: 0 0% 67%;
+    --card-2: "#171717";
   }
 
   .dark {
@@ -72,6 +73,7 @@
     --background-1: 0 0% 13%;
     --background-2: 0 0% 19%;
     --card-1: 0 0% 17%;
+    --card-2: "#171717";
   }
 }
 

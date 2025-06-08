@@ -54,6 +54,7 @@ const config: Config = {
         "background-1": "hsl(var(--background-1))",
         "background-2": "hsl(var(--background-2))",
         "card-1": "hsl(var(--card-1))",
+        "card-2": "var(--card-2)",
       },
 
       borderRadius: {
