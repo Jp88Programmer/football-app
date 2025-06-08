@@ -11,6 +11,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { useState } from "react";
+import useViewport from "@/hooks/useViewport";
 
 export default function DateSelector({
   selectedDate,
@@ -24,61 +25,79 @@ export default function DateSelector({
 
   const [open, setOpen] = useState(false);
 
+  const { isMobile } = useViewport();
+
   const handlePrevDate = () =>
     setSelectedDate(format(subDays(selected, 1), "yyyy-MM-dd"));
   const handleNextDate = () =>
     setSelectedDate(format(addDays(selected, 1), "yyyy-MM-dd"));
 
   return (
-    <div className="flex items-center w-full">
-      <div className="flex items-center justify-between rounded-lg p-1">
+    <div className="flex items-center justify-between w-full">
+      <div className="flex items-center justify-between rounded-lg">
         <button
           onClick={handlePrevDate}
-          className="p-2 hover:bg-dark rounded-lg"
+          className="p-1 sm:p-2 hover:bg-dark rounded-lg flex-shrink-0"
+          aria-label="Previous day"
         >
-          <ChevronLeft size={20} />
+          <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-black dark:text-white" />
         </button>
 
-        <div className="flex space-x-4">
-          {dates.map((date) => (
-            <button
-              key={date.toISOString()}
-              onClick={() => setSelectedDate(format(date, "yyyy-MM-dd"))}
-              className={`px-7 py-1 rounded-lg ${
-                format(date, "yyyy-MM-dd") === selectedDate
-                  ? "border border-primary text-primary"
-                  : "bg-card-1 hover:bg-dark"
-              }`}
-            >
-              <div className="text-[12px]">{format(date, "EEE")}</div>
-              <div className="text-sm font-bold">{format(date, "dd/MM")}</div>
-            </button>
-          ))}
+        <div className="mx-1 sm:mx-2">
+          <div className="flex space-x-1 sm:space-x-2 md:space-x-3 lg:space-x-4 w-full justify-center  max-w-[650px] overflow-x-auto">
+            {dates.map((date) => (
+              <button
+                key={date.toISOString()}
+                onClick={() => setSelectedDate(format(date, "yyyy-MM-dd"))}
+                className={`px-2 sm:px-3 md:px-4 lg:px-7 py-1 rounded-lg flex-shrink-0 transition-colors ${
+                  format(date, "yyyy-MM-dd") === selectedDate
+                    ? "border border-primary text-primary"
+                    : "bg-card-1 hover:bg-dark"
+                }`}
+              >
+                <div className="text-[10px] sm:text-xs">
+                  {format(date, "EEE")}
+                </div>
+                <div className="text-xs sm:text-sm font-medium sm:font-bold">
+                  {format(date, "dd/MM")}
+                </div>
+              </button>
+            ))}
+          </div>
         </div>
 
         <button
           onClick={handleNextDate}
-          className="p-2 hover:bg-dark rounded-lg"
+          className="p-1 sm:p-2 hover:bg-dark rounded-lg flex-shrink-0"
+          aria-label="Next day"
         >
-          <ChevronRight size={20} />
+          <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-black dark:text-white" />
         </button>
       </div>
-      <div className="w-full">
+      <div className="">
         <Popover open={open} onOpenChange={setOpen}>
           <PopoverTrigger asChild>
-            <Button
-              id="date-picker"
-              className="flex items-center gap-2 p-3 rounded-lg bg-card-1 hover:bg-background-1 border border-primary"
-              variant="outline"
-              onClick={() => setOpen(!open)}
-            >
-              <CalendarIcon className="w-8 h-8" color="#c3cc54" />
-              <span className="text-sm">
-                {format(selected, "dd/MM/yyyy")
-                  ? format(selected, "dd/MM/yyyy")
-                  : "View Calendar"}
-              </span>
-            </Button>
+            {!isMobile ? (
+              <Button
+                className="w-full flex items-center justify-center gap-2 p-2 rounded-lg bg-card-1 hover:bg-background-1 border border-primary"
+                variant="outline"
+                onClick={() => setOpen(!open)}
+              >
+                <CalendarIcon className="w-6 h-6" color="#c3cc54" />
+                <span className="text-[12px]">
+                  {format(selected, "dd/MM/yyyy")
+                    ? format(selected, "dd/MM/yyyy")
+                    : "View Calendar"}
+                </span>
+              </Button>
+            ) : (
+              <div
+                className="flex items-center justify-end "
+                onClick={() => setOpen(!open)}
+              >
+                <CalendarIcon className="w-6 h-6 mr-2 text-primary" />
+              </div>
+            )}
           </PopoverTrigger>
           <PopoverContent className="w-auto overflow-hidden p-0" align="end">
             <Calendar

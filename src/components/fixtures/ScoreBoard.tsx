@@ -10,12 +10,16 @@ const ScoreBoard = () => {
   );
 
   return (
-    <div className="bg-background-1 rounded-lg p-4 flex flex-col gap-6 h-full">
-      <DateSelector
-        selectedDate={selectedDate}
-        setSelectedDate={setSelectedDate}
-      />
-      <FixturesList date={selectedDate} />
+    <div className="bg-background-1 rounded-lg p-3 sm:p-4 flex flex-col gap-3 sm:gap-4 md:gap-6 h-full overflow-hidden">
+      <div className="sticky top-0 z-10 bg-background-1 pb-2 sm:pb-3">
+        <DateSelector
+          selectedDate={selectedDate}
+          setSelectedDate={setSelectedDate}
+        />
+      </div>
+      <div className="flex-1 overflow-y-auto -mx-2 sm:mx-0 px-2 sm:px-0">
+        <FixturesList date={selectedDate} />
+      </div>
     </div>
   );
 };

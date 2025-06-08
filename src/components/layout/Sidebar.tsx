@@ -11,7 +11,7 @@ import {
   Sun,
   Moon,
 } from "lucide-react";
-import { useTheme } from "@/provider/ThemeProvider";
+import { useTheme } from "next-themes";
 
 export default function Sidebar() {
   const { theme, setTheme } = useTheme();
@@ -43,8 +43,9 @@ export default function Sidebar() {
       title: "Notification",
     },
   ];
+
   return (
-    <aside className="w-64 bg-background-1 h-full p-4 flex flex-col rounded-lg">
+    <aside className="w-56 bg-background-1 h-full p-4 flex flex-col rounded-lg">
       <div className="flex items-center mb-8">
         <h1 className="text-xl font-bold text-black dark:text-white">
           FOOTBALL<span className="text-primary">SHURU</span>
@@ -69,14 +70,14 @@ export default function Sidebar() {
       <div className="mt-6 space-y-2">
         <Link
           href="/settings"
-          className="flex items-center space-x-3 text-white/70 hover:text-white hover:bg-dark p-2 rounded-lg"
+          className="flex items-center space-x-3 text-black/70 hover:text-slate-800 dark:text-white/70 hover:dark:text-white hover:bg-dark  p-2 rounded-lg"
         >
           <Settings size={20} />
           <span>Settings</span>
         </Link>
         <Link
           href="/download"
-          className="flex items-center space-x-3 text-white/70 hover:text-white hover:bg-dark p-2 rounded-lg"
+          className="flex items-center space-x-3 text-black/70 hover:text-slate-800 dark:text-white/70 hover:dark:text-white hover:bg-dark  p-2 rounded-lg"
         >
           <Download size={20} />
           <span>Download The App</span>

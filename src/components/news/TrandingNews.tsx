@@ -52,60 +52,71 @@ const mockNews: NewsItem[] = [
 
 export default function TrendingNews() {
   return (
-    <div className="flex flex-col gap-4 bg-secondary rounded-lg p-4">
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-lg font-semibold">Trending News</h2>
-        <ChevronRight className="text-primary" size={20} />
+    <div className="flex flex-col gap-3 sm:gap-4 bg-secondary rounded-lg p-3 sm:p-4 max-w-80 h-full">
+      <div className="flex items-center justify-between mb-4 sm:mb-6">
+        <h2 className="text-base sm:text-lg font-semibold text-black dark:text-white">
+          Trending News
+        </h2>
+        <ChevronRight className="text-primary w-4 h-4 sm:w-5 sm:h-5" />
       </div>
 
-      <div className="flex flex-col gap-4">
-        <div className="w-full h-60 relative rounded-lg overflow-hidden">
+      <div className="flex flex-col gap-3 sm:gap-4">
+        <div className="w-full h-40 sm:h-48 md:h-52 lg:h-48 relative rounded-lg overflow-hidden">
           <Image
-            alt="tranding"
+            alt="trending"
             src={trandingNews}
             fill
             className="object-cover"
+            sizes="(max-width: 768px) 100vw, 260px"
+            priority
           />
         </div>
-        <div>
-          <div className="flex items-start justify-center gap-3">
-            <h3 className="text-lg font-semibold">
+        <div className="px-1">
+          <div className="flex items-start justify-between gap-2">
+            <h3 className="text-sm sm:text-base md:text-lg font-medium text-black dark:text-white sm:font-semibold line-clamp-2 pr-2">
               Premier League: Results And Scores
             </h3>
             <Bookmark
               color="#c3cc54"
               fill="#c3cc54"
-              className="cursor-pointer"
+              className="cursor-pointer flex-shrink-0 w-4 h-4 sm:w-5 sm:h-5 mt-0.5"
             />
           </div>
-          <p className="text-[12px] text-white/70 mt-1">4 HOURS AGO</p>
+          <p className="text-[10px] sm:text-xs  text-gray-800  dark:text-white/70  mt-1">
+            4 HOURS AGO
+          </p>
         </div>
       </div>
 
-      <div className="space-y-4 overflow-y-scroll">
+      <div className="space-y-2 sm:space-y-3 md:space-y-4 overflow-y-auto flex-1 -mx-1 px-1">
         {mockNews.map((news) => (
           <div
             key={news.id}
-            className="flex items-center space-x-4 p-2 hover:bg-dark rounded-lg transition-colors cursor-pointer"
+            className="flex items-start sm:items-center gap-2 sm:gap-3 p-2 hover:bg-dark/50 rounded-lg transition-colors cursor-pointer"
           >
-            <div className="relative w-16 h-16 rounded-lg overflow-hidden">
+            <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg overflow-hidden flex-shrink-0">
               <Image
                 src={news.image}
                 alt={news.title}
                 fill
                 className="object-cover"
+                sizes="(max-width: 640px) 48px, 64px"
               />
             </div>
-            <div className="flex-1">
-              <div className="flex items-start justify-center gap-3">
-                <h3 className="font-medium line-clamp-2">{news.title}</h3>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-start justify-between gap-2">
+                <h3 className="text-xs sm:text-sm font-medium text-black dark:text-white line-clamp-2 pr-2">
+                  {news.title}
+                </h3>
                 <Bookmark
                   color="#c3cc54"
-                  fill={news.id == "3" ? "#c3cc54" : "transparent"}
-                  className="cursor-pointer w-8"
+                  fill={news.id === "3" ? "#c3cc54" : "transparent"}
+                  className="cursor-pointer flex-shrink-0 w-4 h-4 sm:w-5 sm:h-5 mt-0.5"
                 />
               </div>
-              <p className="text-[12px] text-white/70 mt-1">{news.time}</p>
+              <p className="text-[10px] sm:text-xs text-gray-800  dark:text-white/70  mt-1">
+                {news.time}
+              </p>
             </div>
           </div>
         ))}
