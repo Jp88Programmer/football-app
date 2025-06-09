@@ -20,7 +20,7 @@ export const dummyFixtures = [
     state_id: 5,
     venue_id: 8879,
     name: "St. Mirren vs Hibernian",
-    starting_at: "2025-06-08 14:00:00",
+    starting_at: new Date().toISOString().replace("T", " ").split(".")[0],
     result_info: "St. Mirren won after full-time.",
     leg: "1/1",
     details: null,
@@ -30,7 +30,7 @@ export const dummyFixtures = [
     placeholder: false,
     has_odds: true,
     has_premium_odds: true,
-    starting_at_timestamp: 1722780000,
+    starting_at_timestamp: Date.now() / 1000,
     localteam: {
       name: "St. Mirren",
       logo_path: stMirren,
@@ -42,7 +42,7 @@ export const dummyFixtures = [
     time: {
       status: "FT",
       starting_at: {
-        date_time: "2024-08-04T14:00:00Z",
+        date_time: new Date(Date.now()).toISOString().split(".")[0] + "Z",
       },
     },
     scores: {
