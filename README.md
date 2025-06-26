@@ -1,4 +1,4 @@
-# Football Fixtures Application
+# Football Application
 
 A modern, responsive web application for viewing football match fixtures, scores, and news. Built with Next.js 14 and TypeScript, this application provides an intuitive interface for football fans to stay updated with their favorite teams and matches.
 
